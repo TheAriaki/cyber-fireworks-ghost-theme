@@ -116,10 +116,18 @@ function reload(done) {
     done();
 }
 
-// Clean built files
-function clean() {
-    const del = require('del');
-    return del(['assets/built/**/*']);
+// Clean built files - simplified version without del
+function clean(done) {
+    // Simple clean - just create the directory if it doesn't exist
+    const fs = require('fs');
+    const path = require('path');
+    
+    const builtDir = path.join(__dirname, 'assets', 'built');
+    if (!fs.existsSync(builtDir)) {
+        fs.mkdirSync(builtDir, { recursive: true });
+    }
+    
+    done();
 }
 
 // Create ZIP for Ghost upload
@@ -135,6 +143,7 @@ function zipFiles(done) {
             '!assets/js/**/*.js', '!assets/js/**/*.map', // Exclude source JS except built files
             'assets/built/**', // Include built files
             '!gulpfile.js',
+            '!package-dev.json',
             '!package-lock.json',
             '!yarn.lock',
             '!*.zip'
