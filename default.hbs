@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}"{{#match @custom.color_scheme "Dark"}} class="dark-mode"{{else match @custom.color_scheme "Auto"}} class="auto-color"{{/match}}>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{meta_title}}</title>
+    <meta name="description" content="{{meta_description}}">
+    <meta name="generator" content="Ghost {{@version}}">
+    
+    {{!-- Theme color and favicon --}}
+    <meta name="theme-color" content="{{@custom.primary_color}}">
+    <link rel="shortcut icon" href="{{@site.icon}}" type="image/x-icon">
+    
+    {{!-- Social media meta tags --}}
+    <meta property="og:site_name" content="{{@site.title}}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{meta_title}}">
+    <meta property="og:description" content="{{meta_description}}">
+    <meta property="og:url" content="{{@site.url}}{{canonical_url}}">
+    <meta property="og:image" content="{{#if feature_image}}{{img_url feature_image}}{{else}}{{@site.cover_image}}{{/if}}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{meta_title}}">
+    <meta name="twitter:description" content="{{meta_description}}">
+    <meta name="twitter:url" content="{{@site.url}}{{canonical_url}}">
+    <meta name="twitter:image" content="{{#if feature_image}}{{img_url feature_image}}{{else}}{{@site.cover_image}}{{/if}}">
+    
+    {{!-- Canonical URL --}}
+    <link rel="canonical" href="{{@site.url}}{{canonical_url}}">
+    
+    {{!-- External resources --}}
+    {{#if @custom.enable_fireworks}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+    {{/if}}
+    
+    {{!-- Ghost head helper --}}
+    {{ghost_head}}
+    
+    {{!-- Theme styles --}}
+    <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}">
+    
+    {{!-- Custom CSS from theme settings --}}
+    <style>
+        :root {
+            --primary-color: {{@custom.primary_color}};
+        }
+    </style>
+</head>
+
+<body class="{{body_class}}{{#match @custom.color_scheme "Dark"}} dark-mode{{/match}}">
+
+    {{!-- Cyber fireworks background --}}
+    {{#if @custom.enable_fireworks}}
+    <div id="fireworks-canvas" class="fireworks-background"></div>
+    {{/if}}
+
+    {{!-- Ghost header --}}
+    <div class="gh-viewport">
+        
+        {{!-- Site navigation --}}
+        {{> "site-header"}}
+
+        {{!-- Main content area --}}
+        <main id="gh-main" class="gh-main">
+            <div class="gh-inner">
+                {{{body}}}
+            </div>
+        </main>
+
+        {{!-- Site footer --}}
+        {{> "site-footer"}}
+
+    </div>
+
+    {{!-- Ghost foot helper --}}
+    {{ghost_foot}}
+
+    {{!-- Theme JavaScript --}}
+    <script src="{{asset "built/main.js"}}"></script>
+
+    {{!-- Cyber fireworks script --}}
+    {{#if @custom.enable_fireworks}}
+    <script>
+        // Cyber fireworks configuration based on theme settings
+        const fireworksConfig = {
+            intensity: '{{@custom.fireworks_intensity}}',
+            primaryColor: '{{@custom.primary_color}}'
+        };
+    </script>
+    <script src="{{asset "built/cyber-fireworks.js"}}"></script>
+    {{/if}}
+
+</body>
+</html> 

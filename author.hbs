@@ -1,0 +1,86 @@
+{{!-- Author archive template --}}
+
+<header class="author-header">
+    <div class="author-header-content">
+        {{#if author.profile_image}}
+        <img src="{{img_url author.profile_image size="l"}}" 
+             alt="{{author.name}}" 
+             class="author-avatar-large">
+        {{/if}}
+        
+        <div class="author-info">
+            <span class="archive-type">Author</span>
+            <h1 class="author-name">{{author.name}}</h1>
+            
+            {{#if author.bio}}
+            <p class="author-bio">{{author.bio}}</p>
+            {{/if}}
+            
+            <div class="author-meta">
+                {{#if author.location}}
+                <span class="author-location">📍 {{author.location}}</span>
+                {{/if}}
+                {{#if author.website}}
+                <a href="{{author.website}}" class="author-website" target="_blank" rel="noopener">
+                    🌐 Website
+                </a>
+                {{/if}}
+                {{#if author.twitter}}
+                <a href="{{twitter_url author.twitter}}" class="author-twitter" target="_blank" rel="noopener">
+                    🐦 Twitter
+                </a>
+                {{/if}}
+            </div>
+            
+            <div class="archive-meta">
+                <span class="post-count">
+                    {{pagination.total}} {{plural pagination.total empty='posts' singular='post' plural='posts'}}
+                </span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="posts-section">
+    <div class="posts-container">
+        {{#foreach posts}}
+            <article class="post-card {{post_class}}">
+                {{#if feature_image}}
+                <a href="{{url}}" class="post-card-image-link">
+                    <img class="post-card-image" 
+                         src="{{img_url feature_image size="m"}}" 
+                         alt="{{title}}"
+                         loading="lazy">
+                </a>
+                {{/if}}
+                
+                <div class="post-card-content">
+                    <div class="post-card-meta">
+                        {{#primary_tag}}
+                        <a href="{{url}}" class="post-card-tag">{{name}}</a>
+                        {{/primary_tag}}
+                        <time class="post-card-date" datetime="{{date format="YYYY-MM-DD"}}">
+                            {{date format="MMM DD, YYYY"}}
+                        </time>
+                    </div>
+                    
+                    <h2 class="post-card-title">
+                        <a href="{{url}}">{{title}}</a>
+                    </h2>
+                    
+                    {{#if excerpt}}
+                    <p class="post-card-excerpt">{{excerpt words="25"}}</p>
+                    {{/if}}
+                    
+                    <div class="post-card-footer">
+                        <div class="post-card-stats">
+                            <span class="reading-time">{{reading_time}}</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        {{/foreach}}
+    </div>
+</section>
+
+{{pagination}} 

@@ -1,0 +1,81 @@
+{{!-- Homepage template --}}
+
+{{!-- Hero section --}}
+<section class="hero-section">
+    <div class="hero-content">
+        <h1 class="hero-title">{{@site.title}}</h1>
+        {{#if @site.description}}
+        <p class="hero-description">{{@site.description}}</p>
+        {{/if}}
+    </div>
+</section>
+
+{{!-- Main posts loop --}}
+<section class="posts-section">
+    <div class="posts-container">
+        {{#foreach posts}}
+            <article class="post-card {{post_class}}">
+                {{#if feature_image}}
+                <a href="{{url}}" class="post-card-image-link">
+                    <img class="post-card-image" 
+                         src="{{img_url feature_image size="m"}}" 
+                         alt="{{title}}"
+                         loading="lazy">
+                </a>
+                {{/if}}
+                
+                <div class="post-card-content">
+                    <div class="post-card-meta">
+                        {{#primary_tag}}
+                        <a href="{{url}}" class="post-card-tag">{{name}}</a>
+                        {{/primary_tag}}
+                        <time class="post-card-date" datetime="{{date format="YYYY-MM-DD"}}">
+                            {{date format="MMM DD, YYYY"}}
+                        </time>
+                    </div>
+                    
+                    <h2 class="post-card-title">
+                        <a href="{{url}}">{{title}}</a>
+                    </h2>
+                    
+                    {{#if excerpt}}
+                    <p class="post-card-excerpt">{{excerpt words="25"}}</p>
+                    {{/if}}
+                    
+                    <div class="post-card-footer">
+                        <div class="post-card-author">
+                            {{#primary_author}}
+                            {{#if profile_image}}
+                            <img src="{{img_url profile_image size="xs"}}" 
+                                 alt="{{name}}" 
+                                 class="author-avatar">
+                            {{/if}}
+                            <span class="author-name">{{name}}</span>
+                            {{/primary_author}}
+                        </div>
+                        
+                        <div class="post-card-stats">
+                            <span class="reading-time">{{reading_time}}</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        {{/foreach}}
+    </div>
+</section>
+
+{{!-- Pagination --}}
+{{pagination}}
+
+{{!-- Call to action section --}}
+{{#if @site.members_enabled}}
+<section class="cta-section">
+    <div class="cta-content">
+        <h3 class="cta-title">Stay Updated</h3>
+        <p class="cta-description">Subscribe to get the latest posts sent to your email.</p>
+        <a href="#/portal/signup" class="cta-button" data-portal="signup">
+            Subscribe Now
+        </a>
+    </div>
+</section>
+{{/if}} 

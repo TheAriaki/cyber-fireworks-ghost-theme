@@ -1,0 +1,60 @@
+{{!-- Site header with navigation --}}
+<header class="site-header">
+    <div class="site-header-inner">
+        
+        {{!-- Site logo/title --}}
+        <div class="site-logo">
+            {{#if @site.logo}}
+            <a href="{{@site.url}}">
+                <img src="{{@site.logo}}" alt="{{@site.title}}" class="site-logo-img">
+            </a>
+            {{else}}
+            <a href="{{@site.url}}" class="site-title">{{@site.title}}</a>
+            {{/if}}
+        </div>
+
+        {{!-- Mobile menu toggle --}}
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
+        {{!-- Navigation menu --}}
+        <nav class="site-nav">
+            {{navigation}}
+            
+            {{!-- Search button --}}
+            <button class="search-toggle" aria-label="Search">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+            </button>
+            
+            {{!-- Subscribe button --}}
+            {{#if @site.members_enabled}}
+            <a href="#/portal/signup" class="subscribe-btn" data-portal="signup">
+                Subscribe
+            </a>
+            {{/if}}
+        </nav>
+        
+    </div>
+</header>
+
+{{!-- Search overlay --}}
+<div class="search-overlay">
+    <div class="search-container">
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="Type to search..." autocomplete="off">
+            <button class="search-close" aria-label="Close search">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <div class="search-results"></div>
+    </div>
+</div> 

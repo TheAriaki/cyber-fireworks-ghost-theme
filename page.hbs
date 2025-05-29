@@ -1,0 +1,47 @@
+{{!-- Static page template --}}
+
+<article class="page-content {{post_class}}">
+    
+    {{!-- Page header --}}
+    <header class="page-header">
+        {{#if feature_image}}
+        <div class="page-image">
+            <img src="{{img_url feature_image size="xl"}}" alt="{{title}}">
+        </div>
+        {{/if}}
+        
+        <div class="page-header-content">
+            <h1 class="page-title">{{title}}</h1>
+            
+            {{#if custom_excerpt}}
+            <p class="page-excerpt">{{custom_excerpt}}</p>
+            {{/if}}
+            
+            <div class="page-meta">
+                <time class="page-date" datetime="{{date format="YYYY-MM-DD"}}">
+                    Updated {{date format="MMM DD, YYYY"}}
+                </time>
+            </div>
+        </div>
+    </header>
+    
+    {{!-- Page content --}}
+    <div class="page-body">
+        {{content}}
+    </div>
+    
+    {{!-- Page footer --}}
+    <footer class="page-footer">
+        {{!-- Subscribe CTA for pages --}}
+        {{#if @site.members_enabled}}
+        <div class="subscribe-cta">
+            <h3>Stay in the loop</h3>
+            <p>Subscribe to get the latest content by email.</p>
+            <a href="#/portal/signup" class="subscribe-button" data-portal="signup">
+                Subscribe
+            </a>
+        </div>
+        {{/if}}
+    </footer>
+    
+</article> 
