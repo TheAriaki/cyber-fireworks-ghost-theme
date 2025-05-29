@@ -84,18 +84,21 @@
       "enable_fireworks": {
         "type": "boolean",
         "default": true,
-        "description": "Enable cyber fireworks background effect"
+        "description": "Enable cyber fireworks background effect",
+        "group": "homepage"
       },
       "fireworks_intensity": {
         "type": "select",
         "options": ["low", "medium", "high"],
         "default": "medium",
-        "description": "Fireworks effect intensity"
+        "description": "Fireworks effect intensity",
+        "group": "homepage"
       },
       "primary_color": {
         "type": "color",
         "default": "#ff3366",
-        "description": "Primary theme color"
+        "description": "Primary theme color",
+        "group": "brand"
       }
     }
   }

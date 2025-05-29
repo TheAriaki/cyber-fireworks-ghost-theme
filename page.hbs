@@ -1,3 +1,4 @@
+{{!< default}}
 {{!-- Static page template --}}
 
 <article class="page-content {{post_class}}">
@@ -6,7 +7,7 @@
     <header class="page-header">
         {{#if feature_image}}
         <div class="page-image">
-            <img src="{{img_url feature_image size="xl"}}" alt="{{title}}">
+            <img src="{{img_url feature_image size="xl"}}" alt="{{title}}" class="page-feature-image">
         </div>
         {{/if}}
         
@@ -19,8 +20,15 @@
             
             <div class="page-meta">
                 <time class="page-date" datetime="{{date format="YYYY-MM-DD"}}">
-                    Updated {{date format="MMM DD, YYYY"}}
+                    {{#if updated_at}}
+                    Updated {{date updated_at format="MMM DD, YYYY"}}
+                    {{else}}
+                    Published {{date format="MMM DD, YYYY"}}
+                    {{/if}}
                 </time>
+                {{#if reading_time}}
+                <span class="page-reading-time">{{reading_time}}</span>
+                {{/if}}
             </div>
         </div>
     </header>
@@ -32,6 +40,16 @@
     
     {{!-- Page footer --}}
     <footer class="page-footer">
+        {{!-- Tags for pages (if any) --}}
+        {{#if tags}}
+        <div class="page-tags">
+            <span class="tags-label">Tagged in:</span>
+            {{#foreach tags}}
+            <a href="{{url}}" class="tag-link">{{name}}</a>
+            {{/foreach}}
+        </div>
+        {{/if}}
+        
         {{!-- Subscribe CTA for pages --}}
         {{#if @site.members_enabled}}
         <div class="subscribe-cta">
@@ -42,6 +60,25 @@
             </a>
         </div>
         {{/if}}
+        
+        {{!-- Social sharing --}}
+        <div class="page-share">
+            <h4>Share this page</h4>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text={{encode title}}&url={{url absolute="true"}}" 
+                   target="_blank" rel="noopener" class="share-twitter">
+                    Twitter
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}" 
+                   target="_blank" rel="noopener" class="share-facebook">
+                    Facebook
+                </a>
+                <a href="mailto:?subject={{encode title}}&body={{url absolute="true"}}" 
+                   class="share-email">
+                    Email
+                </a>
+            </div>
+        </div>
     </footer>
     
 </article> 

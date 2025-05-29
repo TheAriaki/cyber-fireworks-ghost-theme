@@ -844,12 +844,15 @@ a:hover {
     text-align: center;
 }
 
-.page-image img {
+.page-image {
+    margin-bottom: var(--spacing-lg);
+}
+
+.page-feature-image {
     width: 100%;
     height: 300px;
     object-fit: cover;
     border-radius: var(--border-radius);
-    margin-bottom: var(--spacing-lg);
 }
 
 .page-title {
@@ -867,11 +870,80 @@ a:hover {
     color: var(--text-secondary);
     font-family: var(--font-mono);
     font-size: 0.875rem;
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    align-items: center;
+}
+
+.page-reading-time::before {
+    content: "•";
+    margin-right: var(--spacing-xs);
 }
 
 .page-body {
     font-size: 1.125rem;
     line-height: 1.8;
+}
+
+.page-footer {
+    border-top: 2px solid var(--border-color);
+    padding-top: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+.page-tags {
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.page-share {
+    margin: var(--spacing-lg) 0;
+    text-align: center;
+}
+
+.page-share h4 {
+    color: var(--text-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.share-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.share-twitter,
+.share-facebook,
+.share-email {
+    background: var(--background-card);
+    color: var(--text-secondary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.share-twitter:hover {
+    background: #1da1f2;
+    color: white;
+    border-color: #1da1f2;
+}
+
+.share-facebook:hover {
+    background: #1877f2;
+    color: white;
+    border-color: #1877f2;
+}
+
+.share-email:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
 }
 
 /* Reading Progress */
@@ -1268,4 +1340,131 @@ img.lazy.loaded {
         background: white !important;
         color: black !important;
     }
+    
+    .kg-width-wide,
+    .kg-width-full {
+        position: static;
+        width: 100%;
+        margin: 0;
+        transform: none;
+        left: auto;
+        right: auto;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+/* Ghost Editor Content Widths */
+.kg-width-wide {
+    position: relative;
+    width: 85vw;
+    min-width: 100%;
+    margin: auto calc(50% - 50vw);
+    transform: translateX(calc(50vw - 50%));
+}
+
+.kg-width-full {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+/* Ghost Card Styles */
+.kg-card {
+    margin: var(--spacing-lg) 0;
+}
+
+.kg-image-card {
+    margin: var(--spacing-lg) 0;
+}
+
+.kg-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+}
+
+.kg-gallery-card {
+    margin: var(--spacing-lg) 0;
+}
+
+.kg-gallery-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.kg-gallery-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.kg-gallery-image {
+    flex: 1;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+}
+
+.kg-embed-card {
+    margin: var(--spacing-lg) 0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background: var(--background-card);
+}
+
+.kg-bookmark-card {
+    background: var(--background-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+    transition: var(--transition);
+}
+
+.kg-bookmark-card:hover {
+    border-color: var(--primary-color);
+}
+
+.kg-bookmark-container {
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+}
+
+.kg-bookmark-content {
+    flex: 1;
+    padding-right: var(--spacing-md);
+}
+
+.kg-bookmark-title {
+    color: var(--text-color);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.kg-bookmark-description {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.kg-bookmark-metadata {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.kg-bookmark-thumbnail {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
 } 
