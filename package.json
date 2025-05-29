@@ -2,7 +2,7 @@
   "name": "cyber-fireworks-ghost-theme",
   "description": "A futuristic Ghost theme with cyber fireworks effects",
   "demo": "https://github.com/TheAriaki/cyber-fireworks-ghost-theme",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "engines": {
     "ghost": ">=5.0.0"
   },

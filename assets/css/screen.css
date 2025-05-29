@@ -844,6 +844,15 @@ a:hover {
     text-align: center;
 }
 
+/* When Ghost handles title and feature image display */
+.page-content.no-title-header .page-header {
+    display: none;
+}
+
+.page-content.no-title-header {
+    padding-top: calc(80px + var(--spacing-sm));
+}
+
 .page-image {
     margin-bottom: var(--spacing-lg);
 }
@@ -884,6 +893,18 @@ a:hover {
 .page-body {
     font-size: 1.125rem;
     line-height: 1.8;
+}
+
+/* Special styling for Ghost-managed page titles */
+.gh-canvas .gh-content .page-title {
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.gh-canvas .gh-content .page-feature-image {
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-lg);
 }
 
 .page-footer {

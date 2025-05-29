@@ -5,6 +5,8 @@
     
     {{!-- Page header --}}
     <header class="page-header">
+        {{!-- Check if page should show title and feature image --}}
+        {{#unless @page.show_title_and_feature_image}}
         {{#if feature_image}}
         <div class="page-image">
             <img src="{{img_url feature_image size="xl"}}" alt="{{title}}" class="page-feature-image">
@@ -31,6 +33,10 @@
                 {{/if}}
             </div>
         </div>
+        {{else}}
+        {{!-- When @page.show_title_and_feature_image is true, don't show header elements --}}
+        {{!-- Ghost will handle the display automatically --}}
+        {{/unless}}
     </header>
     
     {{!-- Page content --}}
